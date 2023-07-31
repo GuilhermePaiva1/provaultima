@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+Página Inicial
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Filmes Disponíveis</h1>
+            </div>
+        </div>
+    </div>
+</div>
+{% for filmes in filmes %}
+<div class="card mb-3">
+    <div class="card-body">
+        <a href="{% url 'detalhe_filme' id=filmes.id %}">
+            <h5 class="card-title">{{filmes.nome}}</h5>
+        </a>
+
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

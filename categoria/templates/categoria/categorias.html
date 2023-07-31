@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Usuários{% endblock %}
+
+{% block content %}
+<div class="mt-5">
+    <h2>Lista de Categorias</h2>
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for categoria in categorias %}
+            <tr>
+                <td>{{categoria.nome}}</td>
+                <td>
+                    <a href="{% url 'categoria_editar' id=categoria.id %}"><i class="fas fa-edit"></i></a>
+                    <a href="{% url 'categoria_remover' id=categoria.id %}"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+            <!-- Adicione mais linhas como essas para gerar mais dados -->
+        </tbody>
+    </table>
+
+    <div class="mb-3">
+        <a href="{% url 'categoria_criar' %}" class="btn btn-primary">Adicionar Novo</a>
+    </div>
+</div>
+{% endblock %}

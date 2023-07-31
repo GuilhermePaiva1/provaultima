@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Usuários{% endblock %}
+
+{% block content %}
+<div class="mt-5">
+    <h2>Lista de Categorias</h2>
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Sinopse</th>
+                <th scope="col">Data de Lançamento</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for filme in filmes %}
+            <tr>
+                <td>{{filme.nome}}</td>
+                <td>{{filme.sinopse}}</td>
+                <td>{{filme.data_lancamento}}</td>
+                <td>{{filme.categoria}}</td>
+                <td>
+                    <a href="{% url 'filme_editar' id=filme.id %}"><i class="fas fa-edit"></i></a>
+                    <a href="{% url 'filme_remover' id=filme.id %}"><i class="fas fa-trash-alt"></i></a>
+                    <a href="{% url 'detalhe_filme' id=filme.id %}"><i class="fas fa-search"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+            <!-- Adicione mais linhas como essas para gerar mais dados -->
+        </tbody>
+    </table>
+
+    <div class="mb-3">
+        <a href="{% url 'filme_criar' %}" class="btn btn-primary">Adicionar Novo</a>
+    </div>
+</div>
+{% endblock %}
